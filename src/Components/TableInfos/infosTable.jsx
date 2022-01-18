@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useState,useContext,useEffect } from "react";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -11,6 +11,11 @@ import { FinanceContext } from "../../Context/context";
 export default function InfosTable() {
   const { state } = useContext(FinanceContext);
   const { filterData,financeInfos} = state;
+  const {regionName,districtName}=financeInfos
+const [showSum, setshowSum] = useState(true)  
+useEffect(() => {
+    setshowSum(!showSum)
+},[regionName,districtName])
   console.log(filterData)
   return (
     <TableContainer style={{ height: "500px" }} component={Paper}>
@@ -47,7 +52,7 @@ export default function InfosTable() {
                   style={{ fontWeight: "bold", fontSize: "22px" }}
                   align="left"
                 >
-                  {filterData.length>0 ? <h5>{filterData[0].sumAmount}</h5>: <h5>Malumot kiritilmagan</h5>}
+                  {filterData.length>0 ? <h5>{showSum ? filterData[0].sumAmount:""}</h5>: <h5>Malumot kiritilmagan</h5>}
                 </TableCell>
               </TableRow>
           
