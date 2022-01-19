@@ -32,7 +32,7 @@ export default function NavbarComponent({ handleDrawerToggle }) {
           </Box>
         </Hidden>
         <Hidden mdUp>
-          <IconButton color='inherit' onClick={handleDrawerToggle}>
+          <IconButton  onClick={handleDrawerToggle}>
             <MenuRoundedIcon />
           </IconButton>
         </Hidden>

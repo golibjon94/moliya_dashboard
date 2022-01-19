@@ -6,7 +6,7 @@ export const initialState = {
     districtID: "",
     districtName: "",
     regionID: "11",
-    regionName: "ТОШКЕНТ ВИЛОЯТИ",
+    regionName: "",
     paymentYear: "",
     paymentMonth: "",
     programmeID: "",

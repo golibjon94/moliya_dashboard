@@ -15,7 +15,6 @@ export default function HearderComponent() {
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
-    console.log("Jai siya ram");
   };
   const handleDrawerClose = () => {
     setMobileOpen(false);

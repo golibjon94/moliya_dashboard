@@ -32,6 +32,7 @@ export default function SidenavData({ handleDrawerClose }) {
     <List>
       {listItemData.map((item, i) => (
         <Button
+        key={i}
           size='small'
           onClick={() => handleDrawerClose()}
           className={classes.navButton}>

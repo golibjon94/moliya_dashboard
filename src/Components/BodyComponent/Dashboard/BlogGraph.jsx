@@ -6,10 +6,10 @@ import {
   Paper,
   Typography,
 } from "@material-ui/core";
-import { blue, red } from "@material-ui/core/colors";
-import React, { useEffect, useState} from "react";
-import { fakeArrayGenrator } from "../../../Common/fakeDataGenetator";
-import { lineGraphComponent } from "../../../Common/GraphComponent";
+// import { blue, red } from "@material-ui/core/colors";
+import React,{useEffect,useContext} from "react";
+// import { fakeArrayGenrator } from "../../../Common/fakeDataGenetator";
+// import { lineGraphComponent } from "../../../Common/GraphComponent";
 import { useStyles } from "../BodyStyles";
 import Map from "../../Map/Map";
 import { Routes, Route } from "react-router-dom";
@@ -19,64 +19,84 @@ import MonthSelect from "../../Selects/monthSelect";
 import ProgrammeSelect from "../../Selects/programmeSelect";
 import ButtonSelect from "../../Selects/buttonSelect";
 import InfosTable from "../../TableInfos/infosTable";
+import { FinanceContext } from "../../../Context/context";
+import { getFilterData } from "../../../Reducer/action";
 export default function BlogGraph() {
   const classes = useStyles();
-  const [fetched, setFetched] = useState(false);
+  const {state,dispatch} = useContext(FinanceContext)
+const {financeInfos,allDatas}=state;
+ const {districtID,districtName,regionID,regionName,programmeID,paymentMonth,paymentYear}=financeInfos
+  // const [fetched, setFetched] = useState(false);
 
 
-  const GraphData = [
-    {
-      id: "userOverViewGraph",
-      dataSets: [
-        {
-          label: "Current Month",
-          data: fakeArrayGenrator({ length: 30, digit: 100 }),
-          borderColor: blue["A400"],
-          backgroundColor: "rgb(21 101 192 /50%)",
-          fill: true,
-          tension: 0.5,
-        },
-        {
-          label: "Last Month",
-          data: fakeArrayGenrator({ length: 30, digit: 100 }),
-          borderColor: red[500],
-          backgroundColor: "rgb(198 40 40 /30%)",
-          fill: true,
-          tension: 0.5,
-        },
-      ],
-      xAxisLabels: ["week1", "week2", "week3", "week4", "week5"],
-    },
-    {
-      id: "deviceOverViewGraph",
-      type: "pie",
-      dataSets: [
-        {
-          label: "DeskTop",
-          data: fakeArrayGenrator({ length: 3, digit: 1000 }),
-          borderColor: [blue[50], blue[800], blue[500]],
-          backgroundColor: [blue["A200"], blue[400], blue[200]],
-          fill: true,
-          tension: 0.5,
-        },
-      ],
-      xAxisLabels: ["Desktop", "Tablet", "Mobile"],
-    },
-  ];
+  // const GraphData = [
+  //   {
+  //     id: "userOverViewGraph",
+  //     dataSets: [
+  //       {
+  //         label: "Current Month",
+  //         data: fakeArrayGenrator({ length: 30, digit: 100 }),
+  //         borderColor: blue["A400"],
+  //         backgroundColor: "rgb(21 101 192 /50%)",
+  //         fill: true,
+  //         tension: 0.5,
+  //       },
+  //       {
+  //         label: "Last Month",
+  //         data: fakeArrayGenrator({ length: 30, digit: 100 }),
+  //         borderColor: red[500],
+  //         backgroundColor: "rgb(198 40 40 /30%)",
+  //         fill: true,
+  //         tension: 0.5,
+  //       },
+  //     ],
+  //     xAxisLabels: ["week1", "week2", "week3", "week4", "week5"],
+  //   },
+  //   {
+  //     id: "deviceOverViewGraph",
+  //     type: "pie",
+  //     dataSets: [
+  //       {
+  //         label: "DeskTop",
+  //         data: fakeArrayGenrator({ length: 3, digit: 1000 }),
+  //         borderColor: [blue[50], blue[800], blue[500]],
+  //         backgroundColor: [blue["A200"], blue[400], blue[200]],
+  //         fill: true,
+  //         tension: 0.5,
+  //       },
+  //     ],
+  //     xAxisLabels: ["Desktop", "Tablet", "Mobile"],
+  //   },
+  // ];
+
+  // useEffect(() => {
+  //   if (!fetched) {
+  //     GraphData.map((item, i) =>
+  //       lineGraphComponent({
+  //         id: item.id,
+  //         type: item.type,
+  //         dataSets: item.dataSets,
+  //         xAxisLabels: item.xAxisLabels,
+  //       })
+  //     );
+  //   }
+  //   setFetched(true);
+  // }, [Boolean(fetched)]);
 
   useEffect(() => {
-    if (!fetched) {
-      GraphData.map((item, i) =>
-        lineGraphComponent({
-          id: item.id,
-          type: item.type,
-          dataSets: item.dataSets,
-          xAxisLabels: item.xAxisLabels,
-        })
-      );
-    }
-    setFetched(true);
-  }, [fetched]);
+    const filteredData=allDatas ? allDatas.filter(item=>{ 
+      return  item.districtID===districtID 
+       && item.districtName===districtName
+       && item.regionID===regionID 
+       && item.regionName===regionName 
+       && item.paymentYear===paymentYear 
+       && item.paymentMonth===paymentMonth 
+       && item.programmeID===programmeID 
+    })
+    :[];
+    dispatch(getFilterData(filteredData))
+ 
+  }, [districtName,paymentMonth,paymentYear,programmeID]);
 
   return (
     <Grid container className={classes.section} spacing={1}>
@@ -89,7 +109,7 @@ export default function BlogGraph() {
               <YearSelect />
             <MonthSelect />
             <ProgrammeSelect/>
-            <ButtonSelect/>
+            {/* <ButtonSelect/> */}
             </Typography>
           </CardContent>
          
@@ -102,8 +122,8 @@ export default function BlogGraph() {
           </CardContent> */}
           {/* <Map/> */}
           <Routes>
-            <Route  path="/" element={<Map />} />
-            <Route  path="/regionData/:id" render={() => <RegionsData  />}  />
+            <Route exact  path="/" element={<Map />} />
+            <Route  exact path="/regionData/:id" element={<RegionsData />} />
           </Routes>
         </Card>
       </Grid>
@@ -111,8 +131,6 @@ export default function BlogGraph() {
 
       <Grid item xs={12} sm={5} md={5}>
         <Card component={Paper}>
-     
-
           <CardContent>
             <Typography variant="h4" className={classes.cardTitle} align="left">
               Tuman bo'yicha ma'lumot
@@ -128,7 +146,7 @@ export default function BlogGraph() {
         <Card component={Paper}>
           <CardContent>
             <Typography variant="h6" className={classes.cardTitle} align="left">
-              User Overviews
+              Ma'lumotlar grafik tahlili
             </Typography>
           </CardContent>
           <Divider />

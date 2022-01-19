@@ -1,4 +1,4 @@
-import React, { useState, useContext, useRef } from "react";
+import React, { useState, useContext, useRef,useEffect } from "react";
 import "./map.css";
 import { uzbDatas } from "../../datas/uzbDatas";
 import { useNavigate } from "react-router-dom";
@@ -27,17 +27,18 @@ function Map() {
     }
   };
   // -------------------------
-  // useEffect(() => {
-  //   const newObj={
-  //     ...state.financeInfos,
-  //     regionName:name
-  //   }
-  //  dispatch(addInfos(newObj))
-  // }, [name]);
+  useEffect(() => {
+    const newObj={
+      ...state.financeInfos,
+      regionName:name,
+      districtName:""
+    }
+   dispatch(addInfos(newObj))
+  }, []);
   // ------------------
   // ---------------------------------------------------------
   const doubleClick = (id,name) => {
-    navigate(`/Dashboard_Finance/regionData/${id}`);
+    navigate(`/regionData/${id}`);
     const newObj = {
       ...state.financeInfos,
       regionID: id,
@@ -77,24 +78,25 @@ function Map() {
 
           <g id="layer1" transform="translate(-32.388773,-30.710986)">
             {uzbDatas?.map((item) => (
-              <Tooltip
-                title={item.name}
-                placement="bottom"
-                arrow
-                PopperProps={{
-                  popperRef,
-                  anchorEl: {
-                    getBoundingClientRect: () => {
-                      return new DOMRect(
-                        positionRef.current.x,
-                        areaRef.current.getBoundingClientRect().y,
-                        0,
-                        0
-                      );
-                    },
-                  },
-                }}
-              >
+              // <Tooltip
+              //   title={item.name}
+              //   placement="bottom"
+              //   arrow
+              //   PopperProps={{
+              //     popperRef,
+              //     anchorEl: {
+              //       getBoundingClientRect: () => {
+              //         return new DOMRect(
+              //           positionRef.current.x,
+              //           areaRef.current.getBoundingClientRect().y,
+              //           0,
+              //           0
+              //         );
+              //       },
+              //     },
+              //   }}
+              // >
+                <a xlinkTitle={item.name}>
                 <path
                   d={item.d}
                   name={item.name}
@@ -106,7 +108,8 @@ function Map() {
                   ref={areaRef}
                   onMouseMove={handleMouseMove}
                 ></path>
-              </Tooltip>
+                </a>
+              // </Tooltip>
             ))}
           </g>
           <g>

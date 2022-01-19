@@ -1,52 +1,52 @@
 import React from "react";
 import {
   Box,
-  Button,
-  Card,
-  CardContent,
-  Grid,
-  Typography,
+  // Button,
+  // Card,
+  // CardContent,
+  // Grid,
+  // Typography,
 } from "@material-ui/core";
-// import { blue, green, lightBlue, red, teal } from "@material-ui/core/colors";
-import {  green, red} from "@material-ui/core/colors";
-import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
-import ArrowDropUpIcon from "@material-ui/icons/ArrowDropUp";
 import { useStyles } from "../BodyStyles";
-// import GraphComponent from "../../../Common/GraphComponent";
 import BlogGraph from "./BlogGraph";
+import { PageHeader } from "../../../Common/Components";
+// import {  green, red} from "@material-ui/core/colors";
+// import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
+// import ArrowDropUpIcon from "@material-ui/icons/ArrowDropUp";
+// import { blue, green, lightBlue, red, teal } from "@material-ui/core/colors";
+// import GraphComponent from "../../../Common/GraphComponent";
 // import Section3 from "./Section3";
 // import { fakeArrayGenrator } from "../../../Common/fakeDataGenetator";
-import { PageHeader } from "../../../Common/Components";
 // import { Api } from "../../../utils/https";
 
 export default function Dashboard() {
-  const classes = useStyles();
-  const DisplayData = [
-    {
-      label: "Post",
-      value: "2,390",
-      icon: <ArrowDropUpIcon />,
-      iconLabel: "7%",
-    },
-    {
-      label: "Pages",
-      value: "180",
-      icon: <ArrowDropUpIcon />,
-      iconLabel: "5.3%",
-    },
-    {
-      label: "New Visitor",
-      value: "450",
-      icon: <ArrowDropDownIcon />,
-      iconLabel: "4.1%",
-    },
-    {
-      label: "Total Visitor",
-      value: "37450",
-      icon: <ArrowDropDownIcon />,
-      iconLabel: "2.5%",
-    },
-  ];
+  // const classes = useStyles();
+  // const DisplayData = [
+  //   {
+  //     label: "Post",
+  //     value: "2,390",
+  //     icon: <ArrowDropUpIcon />,
+  //     iconLabel: "7%",
+  //   },
+  //   {
+  //     label: "Pages",
+  //     value: "180",
+  //     icon: <ArrowDropUpIcon />,
+  //     iconLabel: "5.3%",
+  //   },
+  //   {
+  //     label: "New Visitor",
+  //     value: "450",
+  //     icon: <ArrowDropDownIcon />,
+  //     iconLabel: "4.1%",
+  //   },
+  //   {
+  //     label: "Total Visitor",
+  //     value: "37450",
+  //     icon: <ArrowDropDownIcon />,
+  //     iconLabel: "2.5%",
+  //   },
+  // ];
 
   // const GraphData = [
   //   {
@@ -108,7 +108,7 @@ export default function Dashboard() {
       <PageHeader label='Dashboard' title='Moliya malumotlari' />
       <BlogGraph />
 
-      <Grid container spacing={1} className={classes.section}>
+      {/* <Grid container spacing={1} className={classes.section}>
         {DisplayData.map((item, i) => (
           <Grid key={i} item xs={6} sm={3} md={3}>
             <Card>
@@ -145,7 +145,7 @@ export default function Dashboard() {
             </Card>
           </Grid>
         ))}
-      </Grid>
+      </Grid> */}
 
       {/* section blog graph  */}
       {/* <h1>Blog graphlar</h1> */}
