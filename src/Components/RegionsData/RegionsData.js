@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext, useRef } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "./regionsData.css";
 import { allDatas } from "../../datas/allDatas";
 import { useParams } from "react-router-dom";

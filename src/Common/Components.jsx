@@ -1,16 +1,14 @@
 import { Grid, Typography } from "@material-ui/core";
 import { useStyles } from "../Components/BodyComponent/BodyStyles";
+import InfoSelect from "../Components/Selects/infoSelect";
 
-export const PageHeader = ({ label, title }) => {
+export const PageHeader = () => {
   const classes = useStyles();
   return (
     <Grid container>
       <Grid item xs={12}>
-        <Typography variant='button' className={classes.pageLabel}>
-          {label}
-        </Typography>
         <Typography variant='h5' component='h2' className={classes.pageHeader}>
-          {title}
+          <InfoSelect/>
         </Typography>
       </Grid>
     </Grid>

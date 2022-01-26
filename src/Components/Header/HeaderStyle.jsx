@@ -19,9 +19,9 @@ export const useStyles = makeStyles((theme) => {
       height: "auto",
       background: "#efefef",
       boxSizing: "border-box",
-      padding: "70px 24px 24px 270px",
+      padding: "120px 24px 24px 40px",
       [theme.breakpoints.down("sm")]: {
-        padding: "70px 24px 24px 24px",
+        padding: "120px 24px 24px 24px",
       },
     },
     logo: {

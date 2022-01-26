@@ -10,10 +10,13 @@ import { FinanceContext } from "../../Context/context";
 
 export default function InfosTable() {
   const { state } = useContext(FinanceContext);
-  const { filterData,financeInfos} = state;
-  console.log(filterData)
+  const { filterData, filterAppData, financeInfos, chosenInfo } = state;
+
+  const allFilappDatas =
+    filterAppData.length > 0 &&
+    filterAppData.reduce((a, b) => a + parseInt(b.applicationsCount), 0);
   return (
-    <TableContainer  component={Paper}>
+    <TableContainer component={Paper}>
       <Table sx={{ minWidth: 150 }} size="large" aria-label="a dense table">
         <TableHead>
           <TableRow>
@@ -30,34 +33,39 @@ export default function InfosTable() {
               style={{ fontSize: "25px", fontWeight: "bold" }}
               align="left"
             >
-              Summa
+              {chosenInfo}
             </TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-    
-              <TableRow
-                sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-              >
-                <TableCell component="th" scope="data"    align="left">
-                  {financeInfos.regionName}
-                </TableCell>
-                <TableCell align="left">{financeInfos.districtName}</TableCell>
-                <TableCell
-                  style={{ fontWeight: "bold", fontSize: "22px" }}
-                  align="left"
-                >
-                  {filterData.length>0
-                   ? <h5>{filterData[0].sumAmount}</h5>:
-                  financeInfos.districtName && financeInfos.regionName
-                  && financeInfos.paymentYear && financeInfos.paymentMonth
-                  && financeInfos.programmeID && filterData.length===0 
-                   ? <h5>Malumot kiritilmagan</h5>:" "
-                  }
-                </TableCell>
-              </TableRow>
-          
-           
+          <TableRow sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
+            <TableCell component="th" scope="data" align="left">
+              {financeInfos.regionName}
+            </TableCell>
+            <TableCell align="left">{financeInfos.districtName}</TableCell>
+            <TableCell
+              style={{ fontWeight: "bold", fontSize: "22px" }}
+              align="left"
+            >
+              {chosenInfo === "SUMMA" && filterData.length > 0 ? (
+                <h5>{filterData[0].sumAmount}</h5>
+              ) : financeInfos.districtName &&
+                financeInfos.regionName &&
+                financeInfos.paymentYear &&
+                financeInfos.paymentMonth &&
+                financeInfos.programmeID &&
+                filterData.length === 0 ? (
+                <h5>Malumot kiritilmagan</h5>
+              ) : (
+                " "
+              )}
+              {chosenInfo === "ARIZALAR" && filterAppData.length > 0 ? (
+                <h5>{allFilappDatas} ta</h5>
+              ) : (
+                ""
+              )}
+            </TableCell>
+          </TableRow>
         </TableBody>
       </Table>
     </TableContainer>

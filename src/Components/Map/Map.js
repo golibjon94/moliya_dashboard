@@ -1,56 +1,35 @@
-import React, { useState, useContext, useRef,useEffect } from "react";
+import React, { useState, useContext, useRef, useEffect } from "react";
 import "./map.css";
 import { uzbDatas } from "../../datas/uzbDatas";
 import { useNavigate } from "react-router-dom";
-// import { useSelector } from 'react-redux';
 import { FinanceContext } from "../../Context/context";
 import { addInfos } from "../../Reducer/action";
-import Tooltip from '@mui/material/Tooltip';
 
 function Map() {
   const [name, setName] = useState(null);
   let navigate = useNavigate();
   const { state, dispatch } = useContext(FinanceContext);
-  // USE refs for tooltip-------------------
-  const positionRef = useRef({
-    x: 0,
-    y: 0,
-  });
-  const popperRef = useRef(null);
-  const areaRef = useRef(null);
-  // ----------------------------------------------------
-  const handleMouseMove = (event) => {
-    positionRef.current = { x: event.clientX, y: event.clientY };
 
-    if (popperRef.current != null) {
-      popperRef.current.update();
-    }
-  };
-  // -------------------------
   useEffect(() => {
-    const newObj={
+    const newObj = {
       ...state.financeInfos,
-      regionName:name,
-      districtName:""
-    }
-   dispatch(addInfos(newObj))
+      regionName: name,
+      districtName: "",
+    };
+    dispatch(addInfos(newObj));
   }, []);
-  // ------------------
-  // ---------------------------------------------------------
-  const doubleClick = (id,name) => {
+  const doubleClick = (id, name) => {
     navigate(`/regionData/${id}`);
     const newObj = {
       ...state.financeInfos,
       regionID: id,
       regionName: name,
-      districtName:""
+      districtName: "",
     };
     dispatch(addInfos(newObj));
   };
   return (
     <div style={{ marginLeft: "40px" }} className="regions">
-    
-
       <div className="uzbmap">
         <svg
           width="100%"
@@ -78,38 +57,14 @@ function Map() {
 
           <g id="layer1" transform="translate(-32.388773,-30.710986)">
             {uzbDatas?.map((item) => (
-              // <Tooltip
-              //   title={item.name}
-              //   placement="bottom"
-              //   arrow
-              //   PopperProps={{
-              //     popperRef,
-              //     anchorEl: {
-              //       getBoundingClientRect: () => {
-              //         return new DOMRect(
-              //           positionRef.current.x,
-              //           areaRef.current.getBoundingClientRect().y,
-              //           0,
-              //           0
-              //         );
-              //       },
-              //     },
-              //   }}
-              // >
-                <a xlinkTitle={item.name}>
+              <a xlinkTitle={item.name}>
                 <path
                   d={item.d}
                   name={item.name}
                   id={item.clas}
-                  onDoubleClick={(id,name) => doubleClick(item.id,item.name)}
-                  // onClick={(id, name) => {
-                  //   togglePopup(item.id, item.name);
-                  // }}
-                  ref={areaRef}
-                  onMouseMove={handleMouseMove}
+                  onDoubleClick={(id, name) => doubleClick(item.id, item.name)}
                 ></path>
-                </a>
-              // </Tooltip>
+              </a>
             ))}
           </g>
           <g>

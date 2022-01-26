@@ -4,7 +4,6 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
-// import { maxWidth } from "@mui/system";
 import { FinanceContext } from "../../Context/context";
 import { addInfos } from "../../Reducer/action";
 export default function ProgrammeSelect() {
@@ -13,7 +12,6 @@ export default function ProgrammeSelect() {
 
   const handleChange = (event) => {
     setprogrammeId(event.target.value);
-    
   };
   const programmes = [
     {

@@ -13,15 +13,23 @@ import Notification from "./ActionTab/Notification";
 import Profile from "./ActionTab/Profile";
 import Messages from "./ActionTab/Messages";
 import Gerb from '../../assets/gerb.png';
-// import 'navbar.css';
+import {Link} from "react-router-dom";
 export default function NavbarComponent({ handleDrawerToggle }) {
   const classes = useStyles();
   return (
-    <AppBar style={{height:"63px"}}>
+    <AppBar >
       <Toolbar className={classes.toolbar}>
-        <Box  style={{ display: "flex",marginLeft:"50px",cursor:"pointer"}}>
+        <Box>
+        
           <Typography className={classes.logo}>
-            <img src={Gerb} alt='logo'  width={"58px"}/>
+           <Link style={{textDecoration:"none",color:"white",cursor:"pointer",letterSpacing:"5px"}} to="/"><h1 >Asosiy sahifa</h1></Link> 
+          </Typography>
+        </Box>
+        <Box>
+        <Typography className={classes.logo} style={{display:"flex",alignItems:"center"}}>
+          <h2 style={{letterSpacing:"5px",width:"200px",lineHeight:"35px"}}>O'zbekiston Respublikasi</h2 >
+            <img style={{margin:"10px 20px",cursor:"pointer"}} src={Gerb} alt='logo'  width={"78px"}/>
+            <h2 style={{letterSpacing:"5px",width:"300px",lineHeight:"35px"}}>Moliya Vazirligi Yagona Reestri</h2>
           </Typography>
         </Box>
         <Hidden smDown>

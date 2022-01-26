@@ -80,6 +80,7 @@ export const useStyles = makeStyles((theme) => ({
   //userOverview section
   cardTitle: {
     color: colors.baseDark,
+    fontSize:"30px",
   },
   generalGraph: {
     width: "100%",
