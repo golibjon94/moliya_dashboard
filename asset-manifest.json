@@ -1,21 +1,21 @@
 {
   "files": {
-    "main.css": "/moliya_dashboard/static/css/main.2026c057.chunk.css",
-    "main.js": "/moliya_dashboard/static/js/main.89a95acc.chunk.js",
-    "main.js.map": "/moliya_dashboard/static/js/main.89a95acc.chunk.js.map",
-    "runtime-main.js": "/moliya_dashboard/static/js/runtime-main.d9cd5e46.js",
-    "runtime-main.js.map": "/moliya_dashboard/static/js/runtime-main.d9cd5e46.js.map",
-    "static/js/2.3d96d8c6.chunk.js": "/moliya_dashboard/static/js/2.3d96d8c6.chunk.js",
-    "static/js/2.3d96d8c6.chunk.js.map": "/moliya_dashboard/static/js/2.3d96d8c6.chunk.js.map",
-    "index.html": "/moliya_dashboard/index.html",
-    "static/css/main.2026c057.chunk.css.map": "/moliya_dashboard/static/css/main.2026c057.chunk.css.map",
-    "static/js/2.3d96d8c6.chunk.js.LICENSE.txt": "/moliya_dashboard/static/js/2.3d96d8c6.chunk.js.LICENSE.txt",
-    "static/media/gerb.53556335.png": "/moliya_dashboard/static/media/gerb.53556335.png"
+    "main.css": "/static/css/main.4e1fe661.chunk.css",
+    "main.js": "/static/js/main.d5fad297.chunk.js",
+    "main.js.map": "/static/js/main.d5fad297.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.5f13ae68.js",
+    "runtime-main.js.map": "/static/js/runtime-main.5f13ae68.js.map",
+    "static/js/2.3048695c.chunk.js": "/static/js/2.3048695c.chunk.js",
+    "static/js/2.3048695c.chunk.js.map": "/static/js/2.3048695c.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/main.4e1fe661.chunk.css.map": "/static/css/main.4e1fe661.chunk.css.map",
+    "static/js/2.3048695c.chunk.js.LICENSE.txt": "/static/js/2.3048695c.chunk.js.LICENSE.txt",
+    "static/media/gerb.53556335.png": "/static/media/gerb.53556335.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.d9cd5e46.js",
-    "static/js/2.3d96d8c6.chunk.js",
-    "static/css/main.2026c057.chunk.css",
-    "static/js/main.89a95acc.chunk.js"
+    "static/js/runtime-main.5f13ae68.js",
+    "static/js/2.3048695c.chunk.js",
+    "static/css/main.4e1fe661.chunk.css",
+    "static/js/main.d5fad297.chunk.js"
   ]
 }
